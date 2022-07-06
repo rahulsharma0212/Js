@@ -1,15 +1,15 @@
 # Project information
-site_name: Computer Science Notes
-site_description: Computer Science Notes, Operating System, Machine Learning, Parallel and Concurrent Programming with C++
-site_author: Jay Chen
-site_url: https://walkccc.github.io/CS
+site_name: DSA Javascript
+site_description: Doing problems with javascript 
+site_author: Rahul Sharma
+site_url: https://rahulsharma0212.github.io/Js/
 
 # Repository
-repo_name: walkccc/CS
-repo_url: https://github.com/walkccc/CS
+repo_name: rahulsharma0212/Js
+repo_url: https://rahulsharma0212.github.io/Js/
 
 # Copyright
-copyright: Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2020
+copyright: Built by <a href="http://github.com/rahulsharma0212">Rahul Sharma</a> &copy; 2022 - 2023
 
 # Configuration
 theme:
@@ -30,14 +30,14 @@ theme:
     - tabs
 
 # Customization
-extra:
-  social:
-    - icon: fontawesome/brands/github-square
-      link: https://github.com/walkccc
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/walkccc/
-    - icon: fontawesome/solid/code
-      link: https://walkccc.github.io/LeetCode
+# extra:
+#   social:
+#     - icon: fontawesome/brands/github-square
+#       link: https://github.com/walkccc
+#     - icon: fontawesome/brands/linkedin
+#       link: https://www.linkedin.com/in/walkccc/
+#     - icon: fontawesome/solid/code
+#       link: https://walkccc.github.io/LeetCode
 
 extra_css:
   - css/katex.css
