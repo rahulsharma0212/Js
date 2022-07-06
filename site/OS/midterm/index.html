@@ -1,0 +1,2940 @@
+<!-- Fix MathJax rendering on iOS Safari due to rendering long numbers as phone numbers. -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+	
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Computer Science Notes, Operating System, Machine Learning, Parallel and Concurrent Programming with C++">
+      
+      
+        <meta name="author" content="Jay Chen">
+      
+      
+        <link rel="canonical" href="https://walkccc.github.io/CS/OS/midterm/">
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+	<meta name="format-detection" content="telephone=no">
+
+    
+      
+        <title>Midterm - Computer Science Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/katex.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#previous-operating-system-midterms-at-ntucsie" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Computer Science Notes" class="md-header__button md-logo" aria-label="Computer Science Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.3c.39.39.39 1.03 0 1.42L8.42 17H5.59l3.99-4Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Computer Science Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Midterm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/walkccc/CS" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    walkccc/CS
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Computer Science Notes" class="md-nav__button md-logo" aria-label="Computer Science Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.3c.39.39.39 1.03 0 1.42L8.42 17H5.59l3.99-4Z"/></svg>
+
+    </a>
+    Computer Science Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/walkccc/CS" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    walkccc/CS
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Parallel and Concurrent Programming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Parallel and Concurrent Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Parallel and Concurrent Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Part 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 1" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Part 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/1-2/" class="md-nav__link">
+        2. Threads and Processes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/1-3/" class="md-nav__link">
+        3. Mutual Exclusion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/1-4/" class="md-nav__link">
+        4. Locks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/1-5/" class="md-nav__link">
+        5. Liveness
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Part 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Part 2" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Part 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/2-1/" class="md-nav__link">
+        1. Synchronization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/2-2/" class="md-nav__link">
+        2. Barriers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCP/2-3/" class="md-nav__link">
+        3. Asynchronous
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          OS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          OS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          PART ONE | OVERVIEW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PART ONE | OVERVIEW" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          PART ONE | OVERVIEW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap01/" class="md-nav__link">
+        Chapter 1 Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap02/" class="md-nav__link">
+        Chapter 2 Operating-System Structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          PART TWO | PROCESS MANAGEMENT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PART TWO | PROCESS MANAGEMENT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          PART TWO | PROCESS MANAGEMENT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap03/" class="md-nav__link">
+        Chapter 3 Processes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap04/" class="md-nav__link">
+        Chapter 4 Threads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap05/" class="md-nav__link">
+        Chapter 5 Process Synchronization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap06/" class="md-nav__link">
+        Chapter 6 CPU Scheduling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap07/" class="md-nav__link">
+        Chapter 7 Deadlocks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          PART THREE | MEMORY MANAGEMENT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PART THREE | MEMORY MANAGEMENT" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          PART THREE | MEMORY MANAGEMENT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap08/" class="md-nav__link">
+        Chapter 8 Main Memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chap09/" class="md-nav__link">
+        Chapter 9 Virtual Memory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Previous Exams
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Previous Exams" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Previous Exams
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Midterm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Midterm
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spring-2011" class="md-nav__link">
+    Spring 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2011" class="md-nav__link">
+    Fall 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2012" class="md-nav__link">
+    Fall 2012
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2013" class="md-nav__link">
+    Fall 2013
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2014" class="md-nav__link">
+    Fall 2014
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2015" class="md-nav__link">
+    Fall 2015
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring-2018" class="md-nav__link">
+    Spring 2018
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        Final
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/01/" class="md-nav__link">
+        Lec 1 - Regression - Case Study
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/02/" class="md-nav__link">
+        Lec 2 - Where does the error com from?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/03/" class="md-nav__link">
+        Lec 3 - Gradient Descent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/04/" class="md-nav__link">
+        Lec 4 - Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/05/" class="md-nav__link">
+        Lec 5 - Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/06/" class="md-nav__link">
+        Lec 6 - Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/07/" class="md-nav__link">
+        Lec 7 - Backpropagation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/08/" class="md-nav__link">
+        Lec 8 - "Hello world" of Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/09/" class="md-nav__link">
+        Lec 9 - Tips for Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          JavaScript DSA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JavaScript DSA" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript DSA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          01 - Problem Solving Patterns
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="01 - Problem Solving Patterns" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          01 - Problem Solving Patterns
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/01/frequencyCounters/" class="md-nav__link">
+        Frequency Counters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/01/multiplePointers/" class="md-nav__link">
+        Multiple Pointers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/01/slidingWindow/" class="md-nav__link">
+        Sliding Window
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/01/divideAndConquer/" class="md-nav__link">
+        Divide and Conquer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          02 - Recursion Problem Set
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="02 - Recursion Problem Set" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          02 - Recursion Problem Set
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/02/recursionEasy/" class="md-nav__link">
+        Recursion Problem Set (easy)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/02/recursionHard/" class="md-nav__link">
+        Recursion Problem Set (hard)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          03 - Sorting Algorithms
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="03 - Sorting Algorithms" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          03 - Sorting Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/03/bubbleSort/" class="md-nav__link">
+        Bubble Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/03/selectionSort/" class="md-nav__link">
+        Selection Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/03/insertionSort/" class="md-nav__link">
+        Insertion Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/03/mergeSort/" class="md-nav__link">
+        Merge Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/03/quickSort/" class="md-nav__link">
+        Quick Sort
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          04 - Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="04 - Data Structures" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          04 - Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/04/SinglyLinkedList/" class="md-nav__link">
+        Singly Linked List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/04/DoublyLinkedList/" class="md-nav__link">
+        Doubly Linked List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/04/BinarySearchTree/" class="md-nav__link">
+        Binary Search Tree
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/04/MaxBinaryHeap/" class="md-nav__link">
+        Max Binary Heap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/04/MaxPriorityQueue/" class="md-nav__link">
+        Max Priority Queue
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          05 - Graphs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="05 - Graphs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          05 - Graphs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/05/Graph/" class="md-nav__link">
+        Graph
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/05/Dijkstra/" class="md-nav__link">
+        Dijkstra Algorithm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spring-2011" class="md-nav__link">
+    Spring 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2011" class="md-nav__link">
+    Fall 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2012" class="md-nav__link">
+    Fall 2012
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2013" class="md-nav__link">
+    Fall 2013
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2014" class="md-nav__link">
+    Fall 2014
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2015" class="md-nav__link">
+    Fall 2015
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring-2018" class="md-nav__link">
+    Spring 2018
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/walkccc/CS/edit/master/docs/OS/midterm.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="previous-operating-system-midterms-at-ntucsie">Previous Operating System Midterms at NTUCSIE<a class="headerlink" href="#previous-operating-system-midterms-at-ntucsie" title="Permanent link">&para;</a></h1>
+<h2 id="spring-2011"><a href="https://www.ptt.cc/man/NTU-Exam/DE0A/D36A/D55E/D109/M.1326244112.A.7FA.html">Spring 2011</a><a class="headerlink" href="#spring-2011" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>Security</strong></p>
+<p><span style="color:red">Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.</p>
+</li>
+<li>
+<p><strong>A Layered Approach in OS Designs</strong></p>
+<p><span style="color:red">The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.</p>
+</li>
+<li>
+<p><strong>Para-virtualization</strong></p>
+<p><span style="color:red">A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.</p>
+</li>
+<li>
+<p><strong>Lightweight Process</strong></p>
+<p><span style="color:red">A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)</p>
+</li>
+<li>
+<p><strong>NUMA</strong></p>
+<p><span style="color:red">Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.</p>
+</li>
+<li>
+<p><strong>Deterministic Modeling</strong></p>
+<p><span style="color:red">Take a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
+</li>
+<li>
+<p><strong>Race Condition</strong></p>
+<p><span style="color:red">Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
+</li>
+<li>
+<p><strong>Write Ahead Logging</strong></p>
+<p><span style="color:red">All modifications are written to a log before they are applied.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer following questions regarding the design of operation systems. (22pts)</p>
+<p>There are two conflicting goals in OS designs: Convenience and Efficiency.</p>
+<ul>
+<li>
+<p>Please give me one example feature of OS that shows the conflict in persuing efficiency and convenience (Hint: Live preview of open windows for Windows7 taskbar). (5pts)</p>
+<p><span style="color:red">GUI vs Command Line.</p>
+</li>
+<li>
+<p>What is the main goal of UNIX process init? Is init a user or kernel process? (8pts)</p>
+<p><span style="color:red">init is responsible for bringing up a UNIX system after the kernel has been bootstrapped. <strong>User process</strong> with superuser privileges!</p>
+</li>
+<li>
+<p>Please explain how I/O protection is done. (5pts)</p>
+<p><span style="color:red">Dual Mode Operations: a mode bit.</p>
+</li>
+<li>
+<p>Give me one advantage in OS implementations in some high-level language. (4pts)</p>
+<ul>
+<li><span style="color:red">Being easy to understand &amp; debug.</li>
+<li><span style="color:red">Being written fast, more compact, and portable.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process managment. (16pts)</p>
+<ul>
+<li>
+<p>Inside the Process Control Block, we might have a filed "Program Counter". What is the purpose of the field? (4pts)</p>
+<p><span style="color:red">It can let us know which line to run, e.g. saved return address $\to$ program counter.</p>
+</li>
+<li>
+<p>There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call <code>malloc()</code> or <code>free()</code>, which segment is involved? (4pts)</p>
+<p><span style="color:red">heap.</p>
+</li>
+<li>
+<p>When a parent process calls <code>fork()</code> to create a child process, how does the parent process know the process ID of the created child process? (4pts)</p>
+<p><span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.</p>
+</li>
+<li>
+<p>Which of the following IPC mechanisms does not require two communicating processes to have a parent-child relationship: Named Pipes and sockets. (4pts)</p>
+<p><span style="color:red">Sockets.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for CPU scheduling. (17pts)</p>
+<ul>
+<li>
+<p>Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)</p>
+<ul>
+<li><span style="color:red">Kernel thread: involves switching registers, stack pointer, and program counter, but is independent of address space switching</li>
+<li><span style="color:red">User-level threads: similar context switching happens often.</li>
+</ul>
+</li>
+<li>
+<p>The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)</p>
+<p><span style="color:red">Division by zero.</p>
+</li>
+<li>
+<p>For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)</p>
+<ul>
+<li><span style="color:red">A new process with a higher priority than the current process arrives.</li>
+<li><span style="color:red">An interrupt occurs. (fairness)</li>
+<li><span style="color:red">Periodically based on clock interrupt. (e.g. RR)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time $0$. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)</p>
+<ul>
+<li>
+<p>Is SJF always better than RR, for any time quantum, in terms of the average turnaround time?(6pts)</p>
+<p><span style="color:red">Yes. <strong><em>Proof</em></strong>:</p>
+<p><span style="color:red">WLOG, given processes $P_1$, $P_2$, $\dots$, $P_n$ with CPU burst time $t_1$, $t_2$, $\dots$, $t_n$, where $t_1 &lt; t_2 &lt; \cdots &lt; t_n$.</p>
+<p><span style="color:red">By SJF, their turnaround time should be:</p>
+<p><span style="color:red">
+$$
+\begin{array}{c|c}
+P_i &amp; \text{waiting time} \\
+\hline
+P_1 &amp; t_1 \\
+P_2 &amp; t_1 + t_2 \\
+P_3 &amp; t_1 + t_2 + t_3 \\
+\vdots &amp; \vdots \\
+P_n &amp; t_1 + t_2 + \cdots + t_n
+\end{array}
+$$</p>
+<p><span style="color:red">Total waiting time:</p>
+<p><span style="color:red">$$nt_1 + (n - 1)t_2 + \cdots + t_n.$$</p>
+<p><span style="color:red">Obviously, this sum is minimized if $t_i$'s that are multiplied more times are smaller ones, i.e., </p>
+<p><span style="color:red">$$t_1 &lt; t_2 &lt; \cdots &lt; t_n.$$</p>
+<p><span style="color:red">Thus, in non-preemptive scheduling, SJF (actually Shortest-next-CPU-burst-first) is optimal for the purpose of minimizing turnaround time.</p>
+</li>
+<li>
+<p>When all processes are of the same size, please tell us what the best time quantum is for RR in terms of the average waiting time. (6pts)</p>
+<p><span style="color:red">$80\%$ of the CPU bursts should be shorter than the time quantum.</p>
+</li>
+<li>
+<p>Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)</p>
+<p><span style="color:red">Similar to 5.(a).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please design a solution for airplanes to land in an airport. Suppose that there is only one runway in the airport. Please make sure that only one airplane can control the runway to land at a time, and there should be no starvation for your solution. (Hint: (1) the Bakery Algorithm; (2) Each process denotes an airplane.) (10pts)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w">          </span><span class="c1">// Pi&#39;s number if it is nonzeros</span>
+<span class="n">boolean</span><span class="w"> </span><span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w">    </span><span class="c1">// Pi is taking a number</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">         </span><span class="c1">// A process want to enter its critical section</span>
+<span class="w">    </span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">number</span><span class="p">[</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">        </span><span class="c1">// A process has got its number</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">choosing</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="p">;</span><span class="w">     </span><span class="c1">// If two processes got the same number, then we should compare their indices</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* critical section */</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* remainder section */</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</li>
+</ol>
+<h2 id="fall-2011"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1335413893.A.32B.html">Fall 2011</a><a class="headerlink" href="#fall-2011" title="Permanent link">&para;</a></h2>
+<p>The exam is 180 minutes long. The total score is 107pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>DMA</strong></p>
+<p><span style="color:red">Release CPU from handling excessive interrupts!
+Execute the device driver to set up the registers of the DMA controller. DMA moves blocks of data between the memory and its own buffers. Transfer from its buffers to its devices. Interrupt the CPU when the job is done.</p>
+</li>
+<li>
+<p><strong>Multiprogramming</strong></p>
+<p><span style="color:red">Increases CPU utilization by organizing jobs so that the CPU always has one to execute.</p>
+</li>
+<li>
+<p><strong>Horizontal Cache Coherency and Consistency</strong></p>
+<p><span style="color:red">Among units of the same storage level.</p>
+<p><span style="color:red">From <a href="https://www.zhihu.com/question/25252397">知乎</a>:</p>
+<ul>
+<li><span style="color:red">Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。</li>
+<li>
+<p><span style="color:red">但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency</p>
+</li>
+<li>
+<p><span style="color:red">Coherence is concerned with updates/invalidations to a single shared variable.</p>
+</li>
+<li><span style="color:red">Consistency is concerned with the behavior of memory references from multiple concurrent threads.</li>
+</ul>
+</li>
+<li>
+<p><strong>A Module Approach in OS Designs</strong> (Hint: A Layered Approach) [ask]</p>
+<p><span style="color:red">Moving all nonessential components from the kernel to the user or system programs!</p>
+</li>
+<li>
+<p><strong>Indirect Communication in Message Passing</strong> ($\leftrightarrow$ Direct)</p>
+<ul>
+<li><span style="color:red">The messages are sent to and received from mailboxes, or ports.</li>
+<li>($\leftrightarrow$) The messages are sent to and received from processes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Socket</strong></p>
+<p><span style="color:red">An endpoint for communication. (IP + port#)</p>
+</li>
+<li>
+<p><strong>Deferred Cancellation</strong> ($\leftrightarrow$ Asynchronous Cancellation)</p>
+<ul>
+<li><span style="color:red">The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.</li>
+<li>($\leftrightarrow$) One thread immediately terminates the target thread.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pull Migration</strong> (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push Migration)</p>
+<ul>
+<li><span style="color:red">Pulling a waiting task from a busy processor.</li>
+<li>($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding the designs of operating systems: (23pts)</p>
+<ul>
+<li>
+<p>Please give me two resources, beside CPU, that are managed by OS. (6pts)</p>
+<p><span style="color:red">CPU time, Memory Space, File Storage, I/O Devices, Shared Code, Data Structures, and more.</p>
+</li>
+<li>
+<p>When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)</p>
+<p><span style="color:red">If there are 2 interrupts, using fixed space is bad since the address of the first interrupted will be covered by later interrupted process.</p>
+</li>
+<li>
+<p>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (12pts)</p>
+<ul>
+<li><span style="color:red">Operating system: registers, cache, memory</li>
+<li><span style="color:red">Hardware: disk</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>OS services are such as those for "program execution", "file-system manipulation", "accounting", and "resource allocation". Which of them are for system efficiency, instead of user convenience? (8pts) [ask]</p>
+<p><span style="color:red">Program execution and resource allocation.</p>
+</li>
+<li>
+<p>Famous Application Programming Interfaces (API) are such as Win 32 API and POSIX API.</p>
+<ul>
+<li>
+<p>What are the two major benefits in providing API, compared to the providing of system calls only?</p>
+<ul>
+<li><span style="color:red">protability (expected to run on any system)</li>
+<li><span style="color:red">actual system calls can be more difficult to learn</li>
+</ul>
+</li>
+<li>
+<p>What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)</p>
+<ul>
+<li><span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.</li>
+<li><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of UNIX and other operating systems.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>In the ordinary virtualization design, the virtualization layer runs in the system mode.</p>
+<ul>
+<li>
+<p>For VMware, the virtualization layer runs in the system or user mode?</p>
+<p><span style="color:red">The user mode.</p>
+</li>
+<li>
+<p>For Java, the Java virtual machine run in the system or user mode? (6pts)</p>
+<p><span style="color:red">The user mode.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process management and scheduling. (20pts)</p>
+<ul>
+<li>
+<p>Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts) [Spring 2011 5.(c)]</p>
+<ul>
+<li><span style="color:red">A new process with a higher priority than the current process arrives.</li>
+<li><span style="color:red">An interrupt occurs. (fairness)</li>
+<li><span style="color:red">Periodically based on clock interrupt. (e.g. RR)</li>
+</ul>
+</li>
+<li>
+<p>Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)</p>
+<p><span style="color:red">Because the interval between executions are longer.</p>
+</li>
+<li>
+<p>Please explain the main difference between a user-level thread and a kernel thread. (5pts)</p>
+<p><span style="color:red"></p>
+</li>
+<li>
+<p>Is a Java thread is a user-level thread or a kernel thread? (4pts)</p>
+<p><span style="color:red">Level Depending on the Thread Library on the Host System.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The scheduling algorithm of Solaris 9 is based on the Multilevel Feedback Queue Scheduling algorithm. There are six priority classes. Please explain the Fair Sharing class? Please explain how interactive threads in the Time Sharing or Interactive class are favored in scheduling in Solaris 8 or 9? (6pts)</p>
+<p><span style="color:red"></p>
+</li>
+<li>
+<p>Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)</p>
+<p><span style="color:red">Given processes:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Process</th>
+<th align="center">Period</th>
+<th align="center">ProcTime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$P_1$</td>
+<td align="center">$p_1 = 50$</td>
+<td align="center">$t_1 = 25$</td>
+</tr>
+<tr>
+<td align="center">$P_2$</td>
+<td align="center">$p_2 = 80$</td>
+<td align="center">$t_2 = 35$</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="normal" src="../../assets/os/6.18.png" /></p>
+<p><img alt="normal" src="../../assets/os/6.19.png" /></p>
+</li>
+<li>
+<p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums $L$ and $S$, where $L &gt; S$. Let the scheduling criteria be the average waiting time, and $L$ be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum $S$ when all processes are ready at time $0$? Please give me your answer with argument. (7pts)</p>
+<p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$</p>
+<ul>
+<li><span style="color:red">With quantum $&gt; 10 (L)$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
+<li><span style="color:red">With quantum $= 5$, average waiting time = [0 + (15 - 5) + (5 - 0) + (20 - 10) + (10 - 0) + (25 - 15)] = 45 / 3 = 15.</li>
+<li><span style="color:red">With quantum $= 1$, average waiting time = ... = (18 + 19 + 20) / 3 = 19.</li>
+<li><span style="color:red">With quantum $\to 0$, average waiting time $\approx$ (20 + 20 + 20) / 3 = 20.</li>
+</ul>
+<p><span style="color:red">It is obvious that smaller time slice will lead a longer average waiting time.</p>
+</li>
+</ol>
+<h2 id="fall-2012"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1418537836.A.BB5.html">Fall 2012</a><a class="headerlink" href="#fall-2012" title="Permanent link">&para;</a></h2>
+<p>The exam is 180 minutes long. The total score is 110pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>Hardware Interrupt</strong></p>
+<p><span style="color:red">Services requests of I/O devices.</p>
+</li>
+<li>
+<p><strong>Virtual Machine</strong></p>
+<p><span style="color:red">Provides an interface that is identical to the underlying bare hardware.</p>
+</li>
+<li>
+<p><strong>Context Switch</strong></p>
+<p><span style="color:red">It saves the state of the currently running process and loads the state of the newly scheduled process.</p>
+</li>
+<li>
+<p><strong>A Full Duplex Pipe</strong></p>
+<p><span style="color:red">A pipe that supports two ways of message passing simultaneously.</p>
+</li>
+<li>
+<p><strong>Multilevel Queue Scheduling</strong></p>
+<p><span style="color:red">Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.</p>
+</li>
+<li>
+<p><strong>Memory Stall</strong></p>
+<p><span style="color:red">A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.</p>
+</li>
+<li>
+<p><strong>Bounded Waiting</strong> (A Requirement of a Critical Section Solution)</p>
+<p><span style="color:red">A waiting process only waits for a bounded number of processes to enter their critical sections.</p>
+</li>
+<li>
+<p><strong>Adaptive Mutex</strong></p>
+<p><span style="color:red">A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding the designs of operating systems: (20pts)</p>
+<ul>
+<li>
+<p>What is the difference between <strong>multiprogramming</strong> and <strong>time sharing</strong>? (6pts)</p>
+<p><span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.</p>
+</li>
+<li>
+<p>Which one of the following memory unit is managed by the operating systems: Registers, Cache, Main Memory, Disks (8pts)</p>
+<p><span style="color:red">Main Memory and Disks.</p>
+</li>
+<li>
+<p>Operating systems services include user interfaces. UNIX shells, including the Bourne shell and C shell, provide command interpreters. Consider UNIX shells, please give me one command that is implemented as some code inside the command interpreter and two commands that are implemented by system programs? (6pts)</p>
+<ul>
+<li>
+<p>Inside the command interpreter:</p>
+<ul>
+<li>C shell: <span style="color:red">umask, cd and limit</li>
+<li>Bourne shell: <span style="color:red">ulimit -H and -S</li>
+</ul>
+</li>
+<li>
+<p>By system programs: <span style="color:red">rm and ls</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Message passing is a way for interprocess communication. Consider the capacity of a link between two processes has zero capacity. Is the message passing (between the two processes) synchronous or asynchronous? You must provide explanation to receive any credits. (5pts)</p>
+<p><span style="color:red">It is synchronous because we can only have blocking sends and blocking receives.</p>
+</li>
+<li>
+<ul>
+<li>
+<p>Please give me one occasion when a mid-term scheduler should run.</p>
+<p><span style="color:red">The remaining main memory is low or the CPU utilization is too high.</p>
+</li>
+<li>
+<p>Can a short-term scheduler schedule the executions of user-level threads?</p>
+<p><span style="color:red">No.</p>
+</li>
+<li>
+<p>Can a short-term scheduler schedule the executions of a Java thread? (9pts)</p>
+<p><span style="color:red">It depends on the thread library on the host system.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider signal handling for threads.</p>
+<ul>
+<li>
+<p>Is a Division-By-Zero signal synchronous or asynchronous?</p>
+<p><span style="color:red">Synchronous.</p>
+</li>
+<li>
+<p>Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts) [Spring 2011 4.(b)]</p>
+<p><span style="color:red">No. It should be only sent to the thread that causes the signal.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (24pts)</p>
+<ul>
+<li>
+<p>For the Round-Robin Scheduling, what would be the preferred time slice in general? (4pts) [Spring 2011 6.(b)]</p>
+<p><span style="color:red">$80\%$ of the CPU bursts should be shorter than the time quantum.</p>
+</li>
+<li>
+<p>For the Round-Robin Scheduling, shall we have a small time slice for a better average turn around time? (4pts)</p>
+<p><span style="color:red">No, a small time slice will increase the average turnaround time.</p>
+</li>
+<li>
+<p>For the Priority Scheduling, how to avoid the starvation problem (in which a low priority process can never be scheduled)? (4pts)</p>
+<p><span style="color:red">An <strong>aging</strong> solution by increasing the priority of a process that waits for a long time.</p>
+</li>
+<li>
+<p>Please explain how a guest operating-system scheduling algorithm that assumes a certain amount of progress in a given amount of time might be negatively impacted by virtualization. (6pts)</p>
+<p><span style="color:red">It is because the virtualization software needs to schedule the use of the physical CPUs among the virtual CPUs. A given amount of the time slice might take much more than the time of the virtual CPU time.</p>
+</li>
+<li>
+<p>For the evaluation of a scheduling algorithm, please give me two difficulties in using the implementation method. (6pts)</p>
+<ul>
+<li><span style="color:red">Cost in modifying the OS</li>
+<li><span style="color:red">User reaction to OS changes</li>
+<li><span style="color:red">Changing of the environment in which the algorithm is used</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Please explain the difference between the signal operation of a binary semaphore and that of a condition variable (of a monitor). (5pts)</p>
+<p><span style="color:red">The signal operation of a condition variable resumes one suspended process. If there is none, no effect is imposed.</p>
+</li>
+<li>
+<p>Consider a barber shop in which there are two barbers. Each barber can service exactly one customer at a time. Please use binary semaphores to implement the request for the hair-cut service. (12pts)</p>
+<p><span style="color:red">Use an integer $S$ with initial value = $2$ to indicate the number of available barbers.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">customer</span><span class="w"> </span><span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">semaphore</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span><span class="w"> </span><span class="o">*</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">add</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">block</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span><span class="w"> </span><span class="o">*</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">wakeup</span><span class="p">(</span><span class="n">C</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Customer $C_i$:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/* critical section */</span><span class="w"></span>
+<span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts) [ask]</p>
+<p><span style="color:red">No deadlock because there is no hold-and-wait among processes.</p>
+</li>
+</ol>
+<h2 id="fall-2013"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1402216802.A.99D.html">Fall 2013</a><a class="headerlink" href="#fall-2013" title="Permanent link">&para;</a></h2>
+<p>The exam is 180 minutes long. The total score is 103pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>Booting</strong></p>
+<p><span style="color:red">Initialize all aspects of the system and then load and run the OS.</p>
+</li>
+<li>
+<p><strong>Interrupt Vector</strong></p>
+<p><span style="color:red">An array of interrupt-handlers' addresses that are indexed by device numbers (or interrupt numbers).</p>
+</li>
+<li>
+<p><strong>Cache Coherency</strong> [Fall 2011 1.(c)]</p>
+<p><span style="color:red">Cache coherency problems can arise when more than one processors refer to the same data. Coherency defines what value is returned on a read.</p>
+</li>
+<li>
+<p><strong>Platform as a service (PaaS) in Cloud Computing</strong></p>
+<p><span style="color:red">Pass provides a computing platform and a solution stack as a service, such as a database server. One example is Microsoft Azure.</p>
+</li>
+<li>
+<p><strong>A Modular Kernel</strong> (Hint: OS Structure) [Fall 2011 1.(d)]</p>
+<p><span style="color:red">A moduler kernel consists of a set of components, where there are core/primary modules, and it is of modules without a layer structure.</p>
+</li>
+<li>
+<p><strong>Data Parellelism in Multicore Programming</strong></p>
+<p><span style="color:red">Distribute data over cores to execute the <strong>same operation</strong>.</p>
+</li>
+<li>
+<p><strong>Rate Monotonic Scheduling</strong></p>
+<p><span style="color:red">A fixed priority real-time process scheduling algorithm in which the priorities of processes are <strong>inversely proportional to their periods</strong>.</p>
+</li>
+<li>
+<p><strong>Deterministic Modeling</strong> [Spring 2011 1.(f)]</p>
+<p><span style="color:red">Take a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding the designs of operating systems: (20pts)</p>
+<ul>
+<li>
+<p>There are two conflicting goals in the designs of operating systems. What is the other one, beside "convenient for the users" ? (3pts)</p>
+<p><span style="color:red">Efficient operation of the computer system.</p>
+</li>
+<li>
+<p>Which one of the following actions/events is belonging to or might result in software interrupts: System calls, child termination, mouse clicking, invalid memory access. (8pts)</p>
+<p><span style="color:red">System calls, child temination, and invalid memory access.</p>
+</li>
+<li>
+<p>Consider the implementation of virtual machines in which operating systems run on the top of the virtual machine software (or referred to as the hypervisor). Is an operating system running in the user mode or kernel mode? (3pts) [Fall 2011 5.(a), Fall 2013 2.(c)]</p>
+<p><span style="color:red">The user mode.</p>
+</li>
+<li>
+<p>Please give me 2 advantages of virtual machines, beside system consolidation and easy in system development/deployment. (6pts)</p>
+<p><span style="color:red">Complete isolation and multiple personalities.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>ANSI C refers to the family of successive standards published by ANSI for the C programming language. Please compare difference (or provide the purpose difference) between POSIX and ANSI C. (5pts) [Fall 2011 4.(b)]</p>
+<ul>
+<li>
+<p><span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.</p>
+</li>
+<li>
+<p><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of UNIX and other operating systems.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for task scheduling. (14pts)</p>
+<ul>
+<li>
+<p>Is the "Swapper" a short-term or mid-term scheduler? [ask]</p>
+<p><span style="color:red">Short-term scheduler.</p>
+</li>
+<li>
+<p>In UNIX, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts) [ask]</p>
+<ul>
+<li><span style="color:red">file[]: what files are "being" opened.</li>
+<li><span style="color:red">signal disposition: how to deal with signals.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider message passing and shared memory for inerprocess communication. Is "Pipe" considered one for message passing or shared memory ? Is "Pipe" direct or indirect communication ? Is it "synchronous" or "asynchronous"? for a reader or a writer of the communication in UNIX. You must provide explanation to receive any credits. (12pts)</p>
+<ul>
+<li><span style="color:red">Message passing. Since it's communication between processes without sharing the same address space.</li>
+<li><span style="color:red">Indirect communication. [ask]</li>
+<li><span style="color:red">Synchronous for a reader. [ask]</li>
+<li><span style="color:red">Asynchronous for a writer. [ask]</li>
+</ul>
+</li>
+<li>
+<p>Kernel-level threads are superior than uer-level threads do in many ways.</p>
+<ul>
+<li>
+<p>What is the main disadvantage of kernel-level threads?</p>
+<p><span style="color:red">It is context switching cost.</p>
+</li>
+<li>
+<p>With OpenMP in program development, shall we prefer kernel-level or user-level threads? You must provide explanation to receive any credits. (8pts)</p>
+<p><span style="color:red">We prefer kernel-level threads because we look for parallelism to better utilize multiple cores of a system.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process scheduling. Explanation is needed to receive any credits. (15pts)</p>
+<ul>
+<li>
+<p>Given 3 processes $P_1$, $P_2$, and $P_3$ with CPU burst time $5$, $6$, $7$, respectively. Suppose that the 3 processes arrive at time $0$, and $P_1$ and $P_3$ are the first and the last processes in the ready queue, respectively. What is the average waiting time in running the 3 processes under the Round-Robin Scheduling with the time slice equal to $3$. (5pts)</p>
+<p><span style="color:red"> (6 + (3 + 5) + (6 + 5)) / 3 = 25 / 3.</p>
+</li>
+<li>
+<p>Consider FCFS and Round-Robin Scheduling. If process are only of CPU burst and all arrive at time $0$, do FCFS and Round-Robin Scheduling with time slice = $1$ always have the same total waiting time in running all processes ? Prove your answer. (5pts)</p>
+<p><span style="color:red">No, for example, given processes of CPU burst 7, 1, and 1.</p>
+</li>
+<li>
+<p>Suppose that the variance of the tunaround time is the cirterion in process scheduling. Shall we have a small time slice for a better variance turnaround time when all processes arrive at time $0$? (5pts)</p>
+<p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$.</p>
+<ul>
+<li><span style="color:red">With quantum $= 10$, average turnaround time = (10 + 20 + 30) / 3 = 60 / 3 = 20.</li>
+<li><span style="color:red">With quantum $= 5$, average turnaround time = (20 + 25 + 30) / 3 = 75 / 3 = 25.</li>
+<li><span style="color:red">With quantum $= 1$, average turnaround time = ... = (28 + 29 + 30) / 3 = 87 / 3 = 29.</li>
+<li><span style="color:red">With quantum $\to 0$, average turnaround time $\approx$ 30 + 30 + 30 = 90 / 3 = 30.</li>
+</ul>
+<p><span style="color:red">It is obvious that smaller time slice will lead a longer average turnaround time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please explain why the Completely Fair Scheduling (CFS) of Linux V2.6 favors I/O tasks. (5pts)</p>
+<p><span style="color:red">CFS usually dispatches the CPU to the task with the smallest vruntime (that denotes how long the task runs) such that I/O tasks usually have smaller vruntime.</p>
+</li>
+</ol>
+<h2 id="fall-2014"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1434421485.A.9E4.html">Fall 2014</a><a class="headerlink" href="#fall-2014" title="Permanent link">&para;</a></h2>
+<p>The exam is 180 minutes long. The total score is 108pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>Buffering</strong> (Hint: It is not caching.)</p>
+<p><span style="color:red">It means to keep data in a faster medium temporarily before moving them to a slower layer.</p>
+</li>
+<li>
+<p><strong>Virtual Machine</strong> [Fall 2012 1.(b)]</p>
+<p><span style="color:red">Provides an interface that is identical to the underlying bare hardware.</p>
+</li>
+<li>
+<p><strong>System Generation</strong> (SYSGEN)</p>
+<p><span style="color:red">The process to configure or generate an operating system for a one specific computer.</p>
+</li>
+<li>
+<p><strong>Context Switch</strong> [Fall 2012 1.(c)]</p>
+<p><span style="color:red">Save the state of the old process and load the state of the newly scheduled process.</p>
+</li>
+<li>
+<p><strong>Remote Procedure Call</strong> (Hint: Message Passing)</p>
+<p><span style="color:red">Senders are blocked until the receivers have received messages and replied by reply messages. (A way to abstract the procedure-call mechanism for use between systems with network connection.)</p>
+</li>
+<li>
+<p><strong>Implicit Threading</strong></p>
+<p><span style="color:red">Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.</p>
+</li>
+<li>
+<p><strong>Earliest Deadline First Scheduling</strong></p>
+<p><span style="color:red">A dynamic-priority real-time process scheduling algorithm in which the priorities of processes are higher if their deadlines are closer.</p>
+</li>
+<li>
+<p><strong>Race Condition</strong> [Spring 2011 1.(g)]</p>
+<p><span style="color:red">Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding the designs of operating systems: (22pts)</p>
+<ul>
+<li>
+<p>An operating system could be considered as a resource allocator. Please list 3 resources managed by an operating systems. (6pts) [Fall 2011 2.(a)]</p>
+<p><span style="color:red">CPU time, Memory Space, File Storage, I/O Devices, Shared Code, Data Structures, and more.</p>
+</li>
+<li>
+<p>Please explain what happens to the operating system when an interrupt arrives (until the interrupt is serviced). (4pts)</p>
+<p><span style="color:red">Saving of the address of the interrupted instruction, determine the interrupt type (by polling or interrupt vector), call the corresponding handlers.</p>
+</li>
+<li>
+<p>Which one of the following instructions is a privileged instruction:</p>
+<p>Reading of the Timer, setting of the base register of the memory space of a process, increment the value of a CPU register by one. No explanation is needed. (6pts)</p>
+<p><span style="color:red">Setting of the base register of the memory space of a process.</p>
+</li>
+<li>
+<p>Please explain what happens when a command-line user interface of UNIX executes a command. (6pts)</p>
+<p><span style="color:red">Search the exec file which corresponds to the command; fork a process to execute the file.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider parameter passing to a system call. Give me the major advantage in having a register pointing to a memory block that stores all parameters, compared to having all parameters stored in registers? (5pts)</p>
+<p><span style="color:red">The space needed to store all parameters is virtually unlimited.</p>
+</li>
+<li>
+<p>The memory image of a UNIX process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. </p>
+<ul>
+<li>
+<p>Which one of the above is used when <code>malloc()</code> is invoked? [Spring 2011 3.(b)]</p>
+<p><span style="color:red">heap.</p>
+</li>
+<li>
+<p>When the kernel stack is used? (8pts) [ask]</p>
+<p><span style="color:red">Procedure invocation in the system mode.</p>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<p>Please explain how <code>fork()</code> works when a parent process invoke <code>fork()</code>. [Spring 2011 3.(c)]</p>
+<p><span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.</p>
+</li>
+<li>
+<p>Please use the answer to the <code>fork()</code> invocation to explain the difference between <code>fork()</code> and <code>vfork()</code>. (10pts)</p>
+<p><span style="color:red">When a parent process invoke vfork(), a child process is created by
+       using the process image of the parent process, including its code and data segments. However, the parent process stop temporarily until the child process invokes an execve()-like system call to start a new program or terminates. The child process can modify any contents of the
+       data segment of the parent process.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the multi-core age, threading is encouraged. Please answer the following questions: (8pts)</p>
+<ul>
+<li>
+<p>For multiple cores, do we prefer kernel-level threads or user-level threads? Why? (3pts) [Fall 2013 6.(b)]</p>
+<p><span style="color:red">We prefer kernel-level threads because we look for parallelism to better utilize multiple cores of a system.</p>
+</li>
+<li>
+<p>There are also challenges in programming. Consider merge sorting, in which an unsorted list is divided into $N$ sublists, each containing $1$ element, and then we repeatedly merge sublists to produce new sorted sublists until there is only $1$ sublist remaining. This will be the sorted list. Please use the concept of task parallelism to execute the merge sort over $N$ cores. (5pts)</p>
+<p><span style="color:red">Each core is given a sublist of one element. We then group 2 adjacent cores and let one of the cores merge the sublists of the two cores.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (15pts)</p>
+<ul>
+<li>
+<p>Given 5 processes $P_1$, $P_2$, $P_3$, $P_4$, and $P_5$ with CPU burst time $6$, $5$, $2$, $10$, $5$, respectively. Suppose that the $P_1$, $P_2$, $P_3$, $P_4$, and $P_5$ arrive at time $0$, $3$, $4$, $2$, and $5$, respectively. What is the average waiting time in running the 5 processes under the Preemptive Shortest-Job-First Scheduling. (5pts)</p>
+<p><span style="color:red">(0 + (8 - 3) + (6 - 4) + (18 - 2) + (13 - 5)) / 5 = 31 / 5.</p>
+</li>
+<li>
+<p>Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of Round-Robin Scheduling with time slice equal to $1$ when all processes are ready at time $0$? (5pts) [Spring 2011 5.(a)]</p>
+<p><span style="color:red">Yes. <strong><em>Proof</em></strong>:</p>
+<p><span style="color:red">WLOG, given processes $P_1$, $P_2$, $\dots$, $P_n$ with CPU burst time $t_1$, $t_2$, $\dots$, $t_n$, where $t_1 &lt; t_2 &lt; \cdots &lt; t_n$.</p>
+<p><span style="color:red">By SJF, their waiting time should be:</p>
+<p><span style="color:red">
+$$
+\begin{array}{c|c}
+P_i &amp; \text{waiting time} \\
+\hline
+P_1 &amp; 0 \\
+P_2 &amp; t_1 \\
+P_3 &amp; t_1 + t_2 \\
+\vdots &amp; \vdots \\
+P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
+\end{array}
+$$</p>
+<p><span style="color:red">Total waiting time:</p>
+<p><span style="color:red">$$(n - 1)t_1 + (n - 2)t_2 + \cdots + t_{n - 1}.$$</p>
+<p><span style="color:red">Obviously, this sum is minimized if $t_i$'s that are multiplied more times are smaller ones, i.e., </p>
+<p><span style="color:red">$$t_1 &lt; t_2 &lt; \cdots &lt; t_{n - 1} &lt; t_n.$$</p>
+<p><span style="color:red">Thus, in non-preemptive scheduling, SJF (actually Shortest-next-CPU-burst-first) is optimal for the purpose of minimizing average waiting time.</p>
+</li>
+<li>
+<p>Suppose that the variance of the waiting time is the criterion in process scheduling. Shall we have a small time slice for a better variance for Round-Robin Scheduling when all processes of the same CPU burst arrive at time $0$? (5pts) [Fall 2011 9., Fall 2013, 7.(c)]</p>
+<p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$</p>
+<ul>
+<li><span style="color:red">With quantum $= 10$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
+<li><span style="color:red">With quantum $= 5$, average waiting time = [0 + (15 - 5) + (5 - 0) + (20 - 10) + (10 - 0) + (25 - 15)] = 45 / 3 = 15.</li>
+<li><span style="color:red">With quantum $= 1$, average waiting time = ... = (18 + 19 + 20) / 3 = 19.</li>
+<li><span style="color:red">With quantum $\to 0$, average waiting time $\approx$ (20 + 20 + 20) / 3 = 20.</li>
+</ul>
+<p><span style="color:red">It is obvious that smaller time slice will lead a longer average waiting time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process synchronization: (16pts)</p>
+<ul>
+<li>
+<p>Please compare the difference between a binary semaphore and a condition variable. (3pts) [Fall 2012 7.]</p>
+<p><span style="color:red">The signal operation of a condition variable resumes one suspended process. If there is none, no effect is imposed.</p>
+</li>
+<li>
+<p>Please use Monitor to implement Consumer and Producer with a bounded buffer. (10pts)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">monitor</span><span class="w"> </span><span class="n">ProducerConsumer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">condition</span><span class="w"> </span><span class="n">empty</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">condition</span><span class="w"> </span><span class="n">full</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="cm">/* produce a slot */</span><span class="w"></span>
+<span class="w">        </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">full</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">consumer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">full</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="cm">/* consume a slot */</span><span class="w"></span>
+<span class="w">        </span><span class="n">counter</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span style="color:red">counter: number of filled slots</li>
+<li><span style="color:red">empty: buffer has at least one empty slot</li>
+<li><span style="color:red">full: buffer has at lesat one full slot</li>
+</ul>
+</li>
+<li>
+<p>Please prove that your above solution satisfy the Progress requirement of the Critical Section Problem. (3pts)</p>
+<ul>
+<li><span style="color:red">Mutual exclusioin: monitor ensures that only one process can execute.</li>
+<li><span style="color:red">Progress requirement: by signal(full) to wake wait(full) and signal(empty) to wake wait(empty), the processes won't wait forever.</li>
+<li><span style="color:red">Bounded-waiting: they will both at most wait for 1 process (each other).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="fall-2015"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1466605487.A.7AD.html">Fall 2015</a><a class="headerlink" href="#fall-2015" title="Permanent link">&para;</a></h2>
+<p>The Exam is 180 minutes long. The total score is 105pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>Software Interrupts</strong></p>
+<p><span style="color:red">Caused by software execution, e.g. signals, invalid memory access, division by zero, system calls.</p>
+</li>
+<li>
+<p><strong>Performance Tuning</strong></p>
+<p><span style="color:red">A procedure that seeks to improve performance by removing bottlenecks.</p>
+</li>
+<li>
+<p><strong>Mid-Term Scheduler</strong> ($\leftrightarrow$ Long-Term Scheduler $\leftrightarrow$ Short-Term Scheduler)</p>
+<ul>
+<li><span style="color:red">Swap processes in and out to control the degree of multiprogramming.</li>
+<li>($\leftrightarrow$) Long-Term Scheduler:<ul>
+<li>Selects processes from this pool</li>
+<li>Loads them into memory for execution</li>
+<li>Controls the degree of multiprogramming (# processes). </li>
+<li>Selects a good process mix of I/O-bound and CPU-bound.</li>
+</ul>
+</li>
+<li>($\leftrightarrow$) Short-Term Scheduler:<ul>
+<li>Selects from among the processes that are ready to execute</li>
+<li>Allocates CPU to one of them</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>FIFOs of UNIX</strong></p>
+<p><span style="color:red">Named pipes.</p>
+</li>
+<li>
+<p><strong>Asynchronous Signal</strong> ($\leftrightarrow$ Synchronous Signal)</p>
+<ul>
+<li><span style="color:red">An asynchronous signal usually reports some asynchronous event outside the program, e.g., ^C or time expiration.</li>
+<li>($\leftrightarrow$) Delivered to the same process that performed the operation causing the signal. e.g., illegal memory access, division by 0.</li>
+</ul>
+</li>
+<li>
+<p><strong>Push Migration</strong> (Hint: Load Balancing) [Fall 2011 1.(h)] ($\leftrightarrow$ Pull Migration)</p>
+<ul>
+<li><span style="color:red">Pushing processes from overloaded to less-busy processors.</li>
+<li>($\leftrightarrow$) Pulling a waiting task from a busy processor.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coarse-Grained Multithreading of Hardware Threads</strong> ($\leftrightarrow$ Fine-Grained (interleved))</p>
+<ul>
+<li><span style="color:red">A thread executes on a processor until a long-latency event such as a memory stall occurs.</li>
+<li>($\leftrightarrow$) Switches between threads at a much finer level of granularity</li>
+</ul>
+</li>
+<li>
+<p><strong>Analytic Evaluation</strong> [Spring 2011 1.(f), Fall 2013 1.(h)]</p>
+<p><span style="color:red">Analytic evaluation uses the given algorithm and the system workload to produce a formula or number to evaluate the performance of the algorithm for that workload.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding operating systems: (20pts)</p>
+<ul>
+<li>
+<p>Please compare the difference between interrupt handling by a generic handler and interrupt vector in terms of the mechanism and the response performance. (6pts)</p>
+<p><span style="color:red">A generic handler finds out the interupt type and invokes the corresponding procedure but the interrupt vector lets the corresponding procedure directly invoked though checking up of the interrupt vector; performance: interrupt vector is faster.</p>
+</li>
+<li>
+<p>Please compare the difference between the terms "time sharing" and "multiprogramming". (4pts) [Fall 2012 2.(a)]</p>
+<p><span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.</p>
+</li>
+<li>
+<p>One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts) [Fall 2012 6.(d)]</p>
+<p><span style="color:red">It is because the virtualization software needs to schedule the use of the physical CPUs among the virtual CPUs. A given amount of the time slice might take much more than the time of the virtual CPU time.</p>
+</li>
+<li>
+<p>Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of UNIX passes parameters to the running process of a command issued on the command interpreter. (4pts)</p>
+<p><span style="color:red">It can be done by using one of the exec() system calls.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider process states: New, Ready, Running, Waiting, and Terminated. Please explain how a state makes a transition to another state, where there is only one processor. (12pts)</p>
+<p><img alt="small" src="../../assets/os/3.2.png" /></p>
+</li>
+<li>
+<p>Message passing is one major way for interprocess communication.</p>
+<ul>
+<li>
+<p>What is the main difficulty in using symmetric addressing for direct communication?</p>
+<p><span style="color:red">Process naming (or modularity).</p>
+</li>
+</ul>
+<p>For indirect communication, small messages are sent from a sender to a receiver usually by message copying.</p>
+<ul>
+<li>
+<p>How to reduce system overheads in-sending large messages to a receiver? (8pts)</p>
+<p><span style="color:red">Remapping of addressing space.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>For multicore programming, there could be data parallelism or task parallelism. Please explain how to use data parallelism to find the largest integer of a given set of integers. (5pts) [Fall 2014 6.(b)]</p>
+<p><span style="color:red">First split data over $N$ cores, and let each core find the largest integer of its given integers. Then let one core find the largest integers among the largest integers found on each core.</p>
+</li>
+<li>
+<p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (15pts)</p>
+<ul>
+<li>
+<p>Is the First-Come, First-Served Scheduling (FIFO) a non-preemptive or preemptive scheduling algorithm? Why? (4pts)</p>
+<p><span style="color:red">It is non-preemptive because the running process will not volunteer to give up its CPU until it stops.</p>
+</li>
+<li>
+<p>Given 4 processes $P_1$, $P_2$, $P_3$, and $P_4$ with CPU burst time $5$, $2$, $4$, and $6$, respectively. Suppose that the $P_1$, $P_2$, $P_3$, and $P_4$ all arrive at time $0$. What is the average waiting time in running the 4 processes under the Round-Robin Scheduling with the time slice equal to $3$? (5pts) [Fall 2013 7.(a)]</p>
+<p><span style="color:red">(8 + 3 + (5 + 5) + (8 + 3)) / 4 = 32 / 4 = 8.</p>
+</li>
+<li>
+<p>Longest-Job-First Scheduling always schedules the process of the longest CPU burst first. When all processes arrive at time $0$, does Longest-Job-First Scheduling have the largest average turnaround time? (6pts) [Fall 2013 7.(c)]</p>
+<p><span style="color:red">Yes.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider the intersection of the following two roads, where cars can go from each of the four directions. There is a stop sign for each direction so that every car must stop at the intersection and wait for any car that arrives earlier at the intersection to leave first.</p>
+<ul>
+<li>
+<p>Please use semaphores to implement your solution with some pseudo code. (10pts) [Fall 2012 8.]</p>
+<p><span style="color:red">Use an integer $S$ with initial value = $1$ to indicate the number of available car and a FIFO queue waiting list.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">car</span><span class="w"> </span><span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">semaphore</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span><span class="w"> </span><span class="o">*</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">add</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">car</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">block</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span><span class="w"> </span><span class="o">*</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">car</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">wakeup</span><span class="p">(</span><span class="n">C</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Car $C_i$:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/* critical section */</span><span class="w"></span>
+<span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Please prove that your above solution satisfy the three requirements of the Critical Section Problem. (6pts)</p>
+<ul>
+<li><span style="color:red">Mutual exclusioin: only a car can go across the intersection.</li>
+<li><span style="color:red">Progress requirement: by block() and wakeup(), the processes won't wait forever.</li>
+<li><span style="color:red">Bounded-waiting: at most wait for $n - 1$ cars.</li>
+</ul>
+</li>
+<li>
+<p>Could you revise your solution so that an ambulance can always go first? (5pts)</p>
+<p><img alt="small" src="../../assets/os/2015midterm.png" /></p>
+<p><span style="color:red">Let the ambulance has the highest priority in the waiting queue.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="spring-2018">Spring 2018<a class="headerlink" href="#spring-2018" title="Permanent link">&para;</a></h2>
+<p>The exam is 180 minutes long. The total score is 112pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p>init (Hint: Booting; a UNIX process)</p>
+<p><span style="color:red">A user process that initializes system processes, e.g., various daemons, login processes, after the kernel has been bootstrapped.</p>
+</li>
+<li>
+<p>Dual-Mode Operations (Hint: Mode Bit)</p>
+<p><span style="color:red">Privileged and user-mode instructions, where privileged instructions are machine instructions that may cause harm.</p>
+</li>
+<li>
+<p>Memory Protection (Hint: Hardware Protection)</p>
+<p><span style="color:red">Prevent a user program from modifying the code or data structures of either the OS or other users!</p>
+</li>
+<li>
+<p>A Modular Kernel</p>
+<p><span style="color:red">A set of core components with characteristics: layer-like — modules; microkernel-like — the primary module</p>
+</li>
+<li>
+<p>Asymmetric Addressing for Direct Communication</p>
+<p><span style="color:red">In Direct Communication, sender must specify the receiver ID, but the receiver does not need to specify the sender ID. For example, Send(P, msg), Receive(id, msg)</p>
+</li>
+<li>
+<p>Remote Procedure Call (RPC)</p>
+<p><span style="color:red">A way to abstract the procedure-call mechanism for use between systems with network connection.</p>
+</li>
+<li>
+<p>FIFOS of UNIX</p>
+<p><span style="color:red">Named pipes of UNIX. It is a file in the file system and created by mkfifo(). It offers Half Dulex and Byte-Oriented Transmissions.</p>
+</li>
+<li>
+<p>Implicit Threading</p>
+<p><span style="color:red">Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>For the implementation of the UNIX process control block PCB[]， we have proc[] and .u, which contain different attributes for different purposes (e.g., those must be known regardless of whether the process is running). Which one is in the kemel or user address space? Are they both in the kemel or user address space? Which one of proc[] and .u signal disposition resides? Where thread-specific data/thread local storage will reside (in the kemel or user address space)? (8pts)</p>
+<ul>
+<li>kernel address space: proc[]; user-address space: .u</li>
+<li>.u: signal disposition.</li>
+<li>user address space.</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding operating systems: (21pts)</p>
+<ul>
+<li>
+<p>When timing sharing appears as a feature for operating systems, please tell us two emerging features/subsystems, beside job synchronization. (6pts)</p>
+<p><span style="color:red">one-line file systems, virtual memory, sophisticated CPU scheduling.</p>
+</li>
+<li>
+<p>Virtual machine software provides an interface that is identical to the underlying bare hardware. I/O over a virtual machine could be slow or fast, depending on the implementations. Please give me a case in which I/O is fast, compared to I/O directly over physical devices. (5pts)</p>
+<p><span style="color:red">I/O can be fast over a hard disk when the corresponding disk is implemented over DRAM by emulation.</p>
+</li>
+<li>
+<p>There are operating system services, such as program executions, I/O operations, accounting, resource allocation, e汀or detection. Which one is belonging to those for user convenience? Which one is belonging to those for system efficiency? (1Opts)</p>
+<p><span style="color:red">user convenience: program executions, I/O operations, error detection; system efficiency: accounting, resource allocation.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Multithreading is important for multi-core architectures. Please answer the following questions: (12pts)</p>
+<ul>
+<li>
+<p>Task parallelism is one typical parallelism type. Please give one example for task parallelism. (5pts)</p>
+<p><span style="color:red">Run merge sorting over cores by partitioning data.</p>
+</li>
+<li>
+<p>Please provide two challenges in multicore programming. (4pts)</p>
+<p><span style="color:red">Identifying Tasks — Dividing Activities, Balance, Data Splitting, Data Dependency, Testing and Debugging.</p>
+</li>
+<li>
+<p>Why the context switching cost of kernel-level threads is higher than that of user-level threads. (3pts)</p>
+<p><span style="color:red">Context switching cost is a little bit higher because the kernel must do the switching.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Compare preemptive scheduling and non-preemptive scheduling. Please answer the following questions: (21 pts)</p>
+<ul>
+<li>
+<p>In what circumstance, non-preemptive scheduling wiU be be吐er than preemptive scheduling? (4pts)</p>
+<p><span style="color:red">Non-preemptive scheduling could be better than preemptive scheduling when all jobs are ready together at time 0.</p>
+</li>
+<li>
+<p>The selection of CPU scheduling algorithms should consider the scheduling criteria. If the high Thoughput is the criterion, which one is the best: Shortest job first, FIFO, and round-robin scheduling. You must provide answer to get credits. (6pts)</p>
+<p><span style="color:red">shortest job first.</p>
+</li>
+<li>
+<p>Priority scheduling is a framework for scheduling. Please design a priority assignment formula that gives a lower priority to a job when it runs more time. (5pts)</p>
+<p><span style="color:red">priority = 1 / consumed-CPU-time.</p>
+</li>
+<li>
+<p>For Round-Robin Scheduling, if the lower average Tumaround Time is the criterion, sha11 we prefer a lower time slice? Suppose that a11 jobs are ready at time O. You must provide answer to get credits. (6pts)</p>
+<p><span style="color:red">a lower time slice is bad to the low average turnaround time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Processor Affinity is somehow against push migration. Please explain why. (6pts)</p>
+<p><span style="color:red">It is because of the cost in cache repopulation.</p>
+</li>
+<li>
+<p>Please explain the progress assumption concerns for virtualization. (6pts)</p>
+<p><span style="color:red">lt is assumed that a certain amount of progress should be observed for a system in a given amount oftime under virtualization.</p>
+</li>
+<li>
+<p>Consider solutions to the Critical Section Problem. Please answer the following questions (14pts)</p>
+<ul>
+<li>
+<p>Consider a computing server to service jobs from three FIFO queues in a round robin way whenever there are jobs in any non-empty queues. Please use semaphores to implement your solution with some pseudo code. (6pts)</p>
+<p><span style="color:red">We let the dispatcher of each job queue to wait a shared semaphore whenever it has a pending job. Let the semaphore have a FIFO queue.</p>
+</li>
+<li>
+<p>What is the difference between a binary, semaphore and a condition variable? (3pts)</p>
+<p><span style="color:red">A conditino variable has nothing happening to a signal request if no job is waiting for the variable.</p>
+</li>
+<li>
+<p>The Monitor-based implementation of the Dining Philosopher problem in the textbook implements the idea of two-chop-stick-per-time solution. Will it have the starvation problem? You must provide explanation to receive credits. (5pts)</p>
+<p><span style="color:red">Yes, the starvation problem happens to a philosopher whenever his two neighboring philosophers take turn in eating while he is waiting.</p>
+</li>
+</ul>
+</li>
+</ol>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../Chap09/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 9 Virtual Memory" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter 9 Virtual Memory
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../final/" class="md-footer__link md-footer__link--next" aria-label="Next: Final" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Final
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2020
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/walkccc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/walkccc/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://walkccc.github.io/LeetCode" target="_blank" rel="noopener" title="walkccc.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m414.8 40.79-128 448.01c-4.9 17-22.6 26.8-39.6 22-17-4.9-26.8-22.6-22-39.6l128-447.99c4.9-16.994 22.6-26.834 39.6-21.978 17 4.855 26.8 22.568 22 39.558zm103.8 80.61 112 112c12.5 12.5 12.5 32.7 0 45.2l-112 112c-12.5 12.5-32.7 12.5-45.2 0s-12.5-32.7 0-45.2l89.3-89.4-89.3-89.4c-12.5-12.5-12.5-32.7 0-45.2s32.7-12.5 45.2 0zm-352 45.2L77.25 256l89.35 89.4c12.5 12.5 12.5 32.7 0 45.2s-32.7 12.5-45.2 0L9.372 278.6c-12.496-12.5-12.496-32.7 0-45.2l112.028-112c12.5-12.5 32.7-12.5 45.2 0s12.5 32.7 0 45.2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
